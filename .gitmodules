@@ -1,0 +1,4 @@
+[submodule "Day0/Activity3"]
+	path = Day0/Activity3
+	url = https://github.com/FRC5892/2024Crescendo.git
+	branch = training
