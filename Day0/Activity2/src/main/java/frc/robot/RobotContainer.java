@@ -13,12 +13,12 @@ public class RobotContainer {
 
   
   // START snippet #8
-  // CommandXboxController controller = new CommandXboxController(0);
+  
   // END snippet #8 
   
   
   // START snippet #9
-  // ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
+  
   // END snippet #9
   public RobotContainer() {
     configureBindings();
@@ -26,7 +26,7 @@ public class RobotContainer {
 
   private void configureBindings() {
   // START snippet #10
-  // controller.a().whileTrue(shooterSubsystem.runShooterCommand());
+  
   // END snippet #10
   }
 
