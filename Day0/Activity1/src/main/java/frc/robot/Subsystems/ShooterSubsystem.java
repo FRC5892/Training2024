@@ -24,11 +24,14 @@ public class ShooterSubsystem extends SubsystemBase {
       DriverStation.reportError("ID mismatch detected. Are ids right?", false);
       throw new RuntimeException("ID mismatch detected. Are ids right?");
     }
-    rMotor.follow(lMotor);
-    rMotor.setInverted(true);
+    lMotor.restoreFactoryDefaults();
+    rMotor.restoreFactoryDefaults();
+    
+    lMotor.follow(rMotor);
+    lMotor.setInverted(true);
   }
   public Command runShooterCommand() {
-    return startEnd(()->lMotor.set(1), () -> lMotor.set(0));
+    return startEnd(()->rMotor.set(1), () -> rMotor.set(0));
   }
 
 
