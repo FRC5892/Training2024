@@ -19,8 +19,10 @@ public class ShooterSubsystem extends SubsystemBase {
 
   
   public ShooterSubsystem() {
-    if (lMotor.getPIDController().getP() != 0.0 || rMotor.getPIDController().getP() != 0.0) {
+    // if the P of either shooter motor is greater than 0.5, than it is supposed to be the arm, so throw an exception to avoid damage
+    if (lMotor.getPIDController().getP() > 0.5 || rMotor.getPIDController().getP() > 0.5) {
       DriverStation.reportError("ID mismatch detected. Are ids right?", false);
+      throw new RuntimeException("ID mismatch detected. Are ids right?");
     }
     rMotor.follow(lMotor);
     rMotor.setInverted(true);
