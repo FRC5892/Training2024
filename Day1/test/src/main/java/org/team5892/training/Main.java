@@ -1,13 +1,8 @@
-// you likely haven't seen this before. This is organization that matches the folders. Don't worry about it much.
 package org.team5892.training;
 
 public final class Main {
+    /* This line is used for auto testing/grading. It will be set in step 3.V */
+    public final static Class<?> FRACTION_CLASS = null;
+    /* If this is not present, there will be weird errors*/
 
-  public static void main(String[] args) {
-    System.out.println("Hello world");
-    MyClass myClass = new MyClass(0);
-    myClass.setNumber(10.0);
-    System.out.println(myClass.getNumber());
-
-  }
 }
