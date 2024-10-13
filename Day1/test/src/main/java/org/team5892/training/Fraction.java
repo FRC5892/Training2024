@@ -29,6 +29,12 @@ public class Fraction {
     public void opposite() {
         this.setNumerator(-getNumerator());
     }
+    public void inverse() {
+        double newNumerator =this.getDenominator();
+        double newDenominator =this.getNumerator();
+        this.setNumerator(newNumerator);
+        this.setDenominator(newDenominator);
+    }
     public double getNumerator() {
         return numerator;
     }
