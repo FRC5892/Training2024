@@ -13,12 +13,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class FractionTest {
     private static final PrintStream originalOut = System.out;
     private static final PrintStream originalErr = System.err;
-    private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private static final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-    private static final Class<Fraction> fractionClass = Main.FRACTION_CLASS;
+    private static  ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private static  ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private static final Class<?> fractionClass = Main.FRACTION_CLASS;
 
     @BeforeEach
     public void setUpStreams() {
+        outContent = new ByteArrayOutputStream();
+        errContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }
@@ -108,6 +110,19 @@ class FractionTest {
         assertEquals(21.0, getPrivateDouble("denominator", fraction1),"add() denominator is wrong");
         // 1/3 + 2/7 = 13/21
     }
+    @Test
+    void addSameDenominator() {
+        Object fraction1 = construct(1);
+        setPrivateDouble("numerator",1 ,fraction1);
+        setPrivateDouble("denominator",7 ,fraction1);
+        Object fraction2 = construct(2);
+        setPrivateDouble("numerator",2 ,fraction2);
+        setPrivateDouble("denominator",7 ,fraction2);
+        call("add", false, fraction1, fraction2);
+        assertEquals(3.0, getPrivateDouble("numerator", fraction1),"add() numerator is wrong");
+        assertEquals(7.0, getPrivateDouble("denominator", fraction1),"add() denominator is wrong");
+        // 1/3 + 2/7 = 13/21
+    }
 
     @Test
     void opposite() {
@@ -120,35 +135,50 @@ class FractionTest {
         assertEquals(3.0, getPrivateDouble("denominator", fraction),"opposite() shouldn't set the denominator");
     }
     @Test
-    void inverse() {
+    void reciprocal() {
         Object fraction = construct(1);
         setPrivateDouble("numerator",1 ,fraction);
         setPrivateDouble("denominator",3 ,fraction);
-        call("inverse", false, fraction);
+        call("reciprocal", false, fraction);
         assertEquals(3.0, getPrivateDouble("numerator", fraction),"inverse() set the wrong numerator");
         assertEquals(1.0, getPrivateDouble("denominator", fraction),"inverse() set the wrong denominator");
     }
 
 
     @Test
-    void makeDenominatorValid() {
+    void makeDenominatorValid0() {
         Object fraction = construct(2);
         setPrivateDouble("numerator",2 ,fraction);
         setPrivateDouble("denominator",0 ,fraction);
         call("makeDenominatorValid",true,fraction);
         assertEquals(2.0, getPrivateDouble("numerator", fraction),"makeDenominatorValid() should not change the numerator");
         assertEquals(1.0, getPrivateDouble("denominator", fraction),"makeDenominatorValid() should set the denominator to 1");
-        assertEquals("Denominator was 0. That's not allowed! Setting it to 1 so life can continue\n", errContent.toString(),"Error message wasn't sent");
+        assertEquals("Denominator was 0. That's not allowed! Setting it to 1 so life can continue\n", errContent.toString(),"Error message wasn't sent to stderr");
+        assertEquals("", outContent.toString(),"Error message shouldn't be sent to stdout");
+
+    }
+    @Test
+    void makeDenominatorValidAlreadyValid() {
+        Object fraction = construct(2);
+        setPrivateDouble("numerator",2 ,fraction);
+        setPrivateDouble("denominator",3 ,fraction);
+        call("makeDenominatorValid",true,fraction);
+        assertEquals(2.0, getPrivateDouble("numerator", fraction),"makeDenominatorValid() should not change the numerator");
+        assertEquals(3.0, getPrivateDouble("denominator", fraction),"makeDenominatorValid() should set the denominator to 1 when the denominator is 0");
+        assertEquals("", errContent.toString(),"Error message shouldn't be sent");
 
     }
 
     Object construct(double d) {
+        if (fractionClass == null) {
+            fail("Please set FRACTION_CLASS in main.java");
+        }
         try {
             return fractionClass.getConstructor(double.class).newInstance(d);
         } catch (NoSuchMethodException e) {
-            fail("getDouble class not found!");
+            fail("No constructor found!");
         } catch (InvocationTargetException | InstantiationException e) {
-            fail();
+            fail(e);
         } catch (IllegalAccessException e) {
             fail("constructor must be public!");
         }
@@ -156,6 +186,9 @@ class FractionTest {
     }
 
     Object call(String name, boolean shouldBePrivate, Object object, Object... args) {
+        if (fractionClass == null) {
+            fail("Please set FRACTION_CLASS in main.java");
+        }
         try {
             Class<?>[] parameters = getParameters(args);
             Method method = fractionClass.getDeclaredMethod(name, parameters);
@@ -189,8 +222,14 @@ class FractionTest {
     }
 
     double getPrivateDouble(String name, Object object) {
+        if (fractionClass == null) {
+            fail("Please set FRACTION_CLASS in main.java");
+        }
         try {
             Field field = fractionClass.getDeclaredField(name);
+            if (field.canAccess(object)) {
+                fail(name + " should not be accessible");
+            }
             field.setAccessible(true);
             return field.getDouble(object);
         } catch (NoSuchFieldException e) {
