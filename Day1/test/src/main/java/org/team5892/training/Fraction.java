@@ -14,14 +14,16 @@ public class Fraction {
     }
     public void multiply(Fraction other) {
         this.setNumerator(other.getNumerator()*this.getNumerator());
-        this.setNumerator(other.getNumerator()*this.getNumerator());
+        this.setDenominator(other.getDenominator()*this.getDenominator());
     }
     public void add(Fraction other) {
-        this.setNumerator(other.getNumerator()+this.getNumerator());
-        if (this.numerator != other.getDenominator()) {
-            this.setNumerator(other.getNumerator()*this.getNumerator());
+        if (this.denominator != other.getDenominator()) {
+            double new1Numerator =this.getNumerator()*other.getDenominator();
+            double new2Numerator =other.getNumerator()*this.getDenominator();
+            this.setNumerator(new1Numerator+new2Numerator);
+            this.setDenominator(other.getDenominator()*this.getDenominator());
         } else {
-            this.setDenominator(other.getNumerator()*this.getNumerator());
+            this.setNumerator(other.getNumerator()+this.getNumerator());
         }
     }
     public void opposite() {

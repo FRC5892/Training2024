@@ -34,7 +34,8 @@ You are implementing a Fraction system in java! yay!
    1. in the explorer tab on the right, right click the (condensed) folders org/team5892/training
    2. click on `Create a new class or Command`
    3. select `Empty Class`
-   4. name it `Fraction`*
+   4. name it `Fraction`
+   5. 
 4. 
 5. 
 

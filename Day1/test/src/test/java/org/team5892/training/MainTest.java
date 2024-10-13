@@ -15,7 +15,7 @@ public final class MainTest {
   private static final PrintStream originalErr = System.err;
   private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
   private static final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-
+  private static final Class fractionClass = Main.FRACTION_CLASS;
   @BeforeAll
   public static void setUpStreams() {
     System.setOut(new PrintStream(outContent));
@@ -28,9 +28,10 @@ public final class MainTest {
     System.setErr(originalErr);
   }
   @Test
-  void test() {
-      fail();
+  void classTest() {
+      assertNotNull(fractionClass, "Fraction class needs to be set in main!");
   }
+
 
 
 }
