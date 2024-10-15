@@ -36,7 +36,7 @@ Note: in reality, you should always return a new object, but we are modifying th
    1. in the explorer tab on the right, right-click the (condensed) folders org/team5892/training.
    2. click on `Create a new class or Command`.
    3. select `Empty Class`.
-   4. Add that class to `Main.java` line 5, replacing the `null`.
+   4. Add that class to `Main.java` line 5, replacing the `null`. Example: `= Fraction.class`
 4. Add a field for the ``numerator``*, and a field for the ``denominator``*. They should be inaccessible from other classes. These numbers should be stored as the most common type for whole or decimal values (not a float).
 5. Add an accessible by anyone constructor that takes in and sets the numerator. The denominator should default to `1.0`.
 6. Add public getters and setters for both fields.
