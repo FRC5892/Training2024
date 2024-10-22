@@ -1,6 +1,12 @@
-# Java Test
-Finish this to earn your java badge! 
+# Java Basics Badge Test
+Finish this to earn your Java Basics badge! 
 
+## On a chromebook
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/FRC5892/Training2024)
+
+Open a in a new Codespace (just click create codespace if prompted for settings) and hit 3 dots -> file -> open folder -> day 1 -> test -> ok
+## Asynchronous submittion
+Send a screenshot to me (in slack) of the Build Success text when you finish. You can scroll up a little in the terminal to see what tests passed / failed, and even further to see some error messages for why tests failed.
 ## Rules
 * You may use resources normally available to you, so
   * You **can** use intellisense 
@@ -29,6 +35,7 @@ You are implementing a Fraction system in java! yay!
 
 Note: in reality, you should always return a new object, but we are modifying the object for simplicity and to show knowledge.
 ####  In the `Main` class
+0. **Read the directions. They were not designed to be very long and bore you. Everything in the instructions exists for a purpose.**
 1. Create a main method
 2. print `Hello world!`* to the standard output (stdout).
 #### Making a `Fraction` class
@@ -52,4 +59,4 @@ Note: in reality, you should always return a new object, but we are modifying th
 15. Divide that by another fraction, with a value of 1/7 (by first taking the reciprocal of the 2nd fraction)
 16. print the output (to stdout) like this `1/2 / 1/7 = x.x`, where `x.x` is the double of the fraction after division
 17. Do steps 14-16 again, but this time subtract `1/2` by `1/7`
-18. Test!
+18. Test! (Look at the test section above)
