@@ -31,11 +31,12 @@ try to read why it failed, but you could also just ask for help.
 ## Instructions
 You are implementing a Fraction system in java! yay! 
 
-* Words that are formatted like `this`* and have a * need to be precise, so copy and pasting is recommend
+> [!IMPORTANT]
+>  Words that are formatted like `this`* and have a * need to be precise, so copy and pasting is recommend
 
-Note: in reality, you should always return a new object, but we are modifying the object for simplicity and to show knowledge.
+> [!NOTE]
+> in reality, you should always return a new object, but we are modifying the object for simplicity and to show knowledge.
 ####  In the `Main` class
-0. **Read the directions. They were not designed to be very long and bore you. Everything in the instructions exists for a purpose.**
 1. Create a main method
 2. print `Hello world!`* to the standard output (stdout).
 #### Making a `Fraction` class
