@@ -31,7 +31,8 @@ try to read why it failed, but you could also just ask for help.
 ## Instructions
 You are implementing a Fraction system in java! yay! 
 
-> [!IMPORTANT]
+> [!WARNING]
+>  The auto grading requires precise names.
 >  Words that are formatted like `this`* and have a * need to be precise, so copy and pasting is recommend
 
 > [!NOTE]
@@ -47,9 +48,13 @@ You are implementing a Fraction system in java! yay!
    4. Add that class to `Main.java` line 5, replacing the `null`. Example: `= Fraction.class`
 4. Add a field for the ``numerator``*, and a field for the ``denominator``*. They should be inaccessible from other classes. These numbers should be stored as the most common type for whole or decimal values (not a float).
 5. Add an accessible by anyone constructor that takes in and sets the numerator. The denominator should default to `1.0`.
+> [!IMPORTANT]
+> The constructor should take only one argument, the numerator 
 6. Add public getters and setters for both fields.
 7. The setter of denominator should validate the new denominator by calling `makeDenominatorValid()`.
 8. Add a private method `makeDenominatorValid()`* (takes in no arguments) that checks if the denominator is 0. If it is 0, it sets th denominator to `1.0` and sends the message `Denominator was 0. That's not allowed! Setting it to 1 so life can continue`* to the standard error console (stderr).
+> [!TIP]
+> Stderr is the standard error console. In java it can be accessed by `System.err` instead of `System.out`
 9. Add a public method, in the correct case, that returns (gets) the double equivalent of the fraction (hint: divide).
 10. Add a public method `add(Fraction)`* that takes in a fraction and adds it to itself. It shouldn't return anything. If the denominators are different, multiply (no need to simplify). If they are the same, leave the denominator the same. Use math knowledge to implement the numerator adding (for both same and different denominators).
 11. To allow subtraction, add a public method `opposite()`* that makes the `numerator` negative. It should not change the denominator.
