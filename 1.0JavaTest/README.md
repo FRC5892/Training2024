@@ -1,22 +1,11 @@
 # Java Basics Badge Test
 Finish this to earn your Java Basics badge! 
+This test is a little weird but it uses the java we robotics really uses
 
 ## On a chromebook
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/FRC5892/Training2024)
 
 Open a in a new Codespace (just click create codespace if prompted for settings) and hit 3 dots -> file -> open folder -> day 1 -> test -> ok
-## Asynchronous submittion
-Send a screenshot to me (in slack) of the Build Success text when you finish. You can scroll up a little in the terminal to see what tests passed / failed, and even further to see some error messages for why tests failed.
-## Rules
-* You may use resources normally available to you, so
-  * You **can** use intellisense 
-  * You **can** use Google
-  * You **can** use Stack Overflow 
-* But, you need to show a basic understanding. This means
-  * You **cannot** use AI
-  * You **cannot** use a tutorial (video or course)
-* Yes the answer key is here if you look hard enough, but don't. Being here requires honesty.
-* Try Your Best
 ## Testing
 This project was designed with unit tests, i.e a way for developers to make sure a change doesn't 
 break anything unexpected by testing all functionality before the new code can get too far. This 
